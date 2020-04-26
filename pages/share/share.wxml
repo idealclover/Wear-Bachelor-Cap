@@ -10,15 +10,15 @@
     <text>生成的头像已经保存到相册 OωO</text>
   </view>
   <view class="flex">
-    <button class="flex-sub padding-sm margin-xs radius cu-btn bg-grey margin-tb-sm lg" open-type="share">将小程序分享给朋友</button>
+    <button class="flex-sub padding-sm margin-xs radius cu-btn bg-red margin-tb-sm lg" open-type="share">将小程序分享给朋友</button>
   </view>
   <poster id="poster" config="{{posterConfig}}" bind:success="onPosterSuccess" bind:fail="onPosterFail">
     <view class="flex">
-      <button class="flex-sub padding-sm margin-xs radius cu-btn line-grey text-grey margin-tb-sm lg">生成分享海报</button>
+      <button class="flex-sub padding-sm margin-xs radius cu-btn line-red text-red margin-tb-sm lg">生成分享海报</button>
     </view>
   </poster>
   <!-- <view class="flex">
-    <button class="flex-sub padding-sm margin-xs radius cu-btn line-grey text-grey margin-tb-sm lg">看段广告支持我</button>
+    <button class="flex-sub padding-sm margin-xs radius cu-btn line-red text-red margin-tb-sm lg">看段广告支持我</button>
   </view> -->
 </view>
 <view class="flex footer justify-center align-center">

@@ -10,17 +10,17 @@
   <view class="emptyBg solids flex padding justify-center align-center" wx:else>
     <view>
       <view class="flex">点击授权登录加载您的头像</view>
-      <button class="flex padding-sm margin-xs radius cu-btn bg-grey margin-tb-sm lg" data-way="avatar" bind:tap="getAvatar" open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo">使用头像</button>
+      <button class="flex padding-sm margin-xs radius cu-btn bg-red margin-tb-sm lg" data-way="avatar" bind:tap="getAvatar" open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo">使用头像</button>
     </view>
   </view>
 </view>
 
 <scroll-view class="scrollView" scroll-x="true">
-  <image class="imgList" wx:for="...imgList" wx:key="index" src="../../image/{{index+1}}.png" data-hat-id="{{index+1}}" bind:tap="chooseImg"></image>
+  <image class="imgList" wx:for="{{imgList}}" wx:key="index" src="../../image/{{index+1}}.png" data-hat-id="{{index+1}}" bind:tap="chooseImg"></image>
 </scroll-view>
 <view class="flex">
-  <button class="flex-sub padding-lr-sm margin-xs radius cu-btn line-grey text-grey margin-tb-sm lg" bind:tap="chooseImage">选择图片</button>
-  <button class="flex-sub padding-lr-sm margin-xs radius cu-btn bg-grey margin-tb-sm lg" bind:tap="combinePic" disabled="{{!picChoosed}}">生成头像</button>
+  <button class="flex-sub padding-lr-sm margin-xs radius cu-btn line-red text-red margin-tb-sm lg" bind:tap="chooseImage">选择图片</button>
+  <button class="flex-sub padding-lr-sm margin-xs radius cu-btn bg-red margin-tb-sm lg" bind:tap="combinePic" disabled="{{!picChoosed}}">生成头像</button>
 </view>
 <view class="flex footer justify-center align-center">
   <navigator target="miniProgram" open-type='navigate' app-id='wx2d97a7e54e6094eb' path='pages/index/index'>

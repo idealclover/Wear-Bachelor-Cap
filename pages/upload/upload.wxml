@@ -3,11 +3,11 @@
 <view class="cropper-wrapper">
   <template is="we-cropper" data="{{...cropperOpt}}" />
   <view class="cropper-buttons flex" style="color: {{cropperOpt.boundStyle.color}}">
-    <view class="upload flex-sub padding-sm margin-xs radius cu-btn text-grey margin-tb-sm lg" bindtap="uploadTap">
+    <view class="upload flex-sub padding-sm margin-xs radius cu-btn text-red margin-tb-sm lg" bindtap="uploadTap">
       重新选择
     </view>
     <view class="flex-sub"></view>
-    <view class="getCropperImage flex-sub padding-sm margin-xs radius cu-btn bg-grey margin-tb-sm lg" style="background-color: {{cropperOpt.boundStyle.color}};" bindtap="getCropperImage">
+    <view class="getCropperImage flex-sub padding-sm margin-xs radius cu-btn bg-red margin-tb-sm lg" style="background-color: {{cropperOpt.boundStyle.color}};" bindtap="getCropperImage">
       确定
     </view>
   </view>

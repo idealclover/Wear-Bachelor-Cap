@@ -8,7 +8,7 @@ Page({
   data: {
     bgPic: null,
     picChoosed: false,
-    imgList: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+    imgList: [1],
     currentHatId: 1,
     hatCenterX: 150,
     hatCenterY: 150,
@@ -190,9 +190,9 @@ Page({
   onShareAppMessage: function() {
     let successPic = app.globalData.successPic
       ? app.globalData.successPic
-      : "https://image.idealclover.cn/projects/Wear-A-Mask/avatar.png";
+      : "https://image.idealclover.cn/projects/Wear-Bachelor-Cap/avatar_share.jpg";
     return {
-      title: "一起来为头像带上口罩吧！",
+      title: "戴上学士帽，我们毕业啦！",
       imageUrl: successPic,
       path: "/pages/index/index",
       success: function(res) {}

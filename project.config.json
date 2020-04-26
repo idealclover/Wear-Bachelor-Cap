@@ -6,18 +6,26 @@
 		]
 	},
 	"setting": {
-		"urlCheck": true,
+		"urlCheck": false,
 		"es6": true,
 		"postcss": true,
 		"minified": true,
 		"newFeature": true,
+		"coverView": true,
 		"autoAudits": false,
-		"coverView": true
+		"checkInvalidKey": true,
+		"checkSiteMap": true,
+		"uploadWithSourceMap": true,
+		"babelSetting": {
+			"ignore": [],
+			"disablePlugins": [],
+			"outputPath": ""
+		}
 	},
 	"compileType": "miniprogram",
 	"libVersion": "2.10.1",
-	"appid": "wx8bab0d7b27d1b69e",
-	"projectname": "Wear-A-Mask",
+	"appid": "wx04ff92a861325b05",
+	"projectname": "Wear-Bachelor-Cap",
 	"debugOptions": {
 		"hidedInDevtools": []
 	},
