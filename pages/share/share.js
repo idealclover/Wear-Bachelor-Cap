@@ -5,16 +5,24 @@ Page({
   /**
    * 页面的初始数据
    */
-  // data: {
-  //   posterConfig: posterConfig
-  // },
-
+  data: {
+    actionSheetHidden: true,
+  },
+  actionSheetTap: function () {
+    this.setData({
+      actionSheetHidden: !this.data.actionSheetHidden
+    })
+  },
+  listenerActionSheet: function () {
+    this.setData({
+      actionSheetHidden: !this.data.actionSheetHidden
+    })
+  },
   onLoad: function() {    
     let successPic = app.globalData.successPic
       ? app.globalData.successPic
       : "https://image.idealclover.cn/projects/Wear-Bachelor-Cap/avatar.jpg";
       // : "https://idealclover.top/icon.jpg";
-    console.log(successPic);
     const posterConfig = {
       width: 840,
       height: 1280,
@@ -115,7 +123,6 @@ Page({
   },
 
   onPosterSuccess(e) {
-    console.log('qwq')
     const { detail } = e;
     wx.previewImage({
       current: detail,
