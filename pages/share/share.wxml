@@ -10,7 +10,7 @@
     <text>生成的头像已经保存到相册 OωO</text>
   </view>
   <view class="flex">
-    <button class="flex-sub padding-sm margin-xs radius cu-btn bg-red margin-tb-sm lg" bind:tap="actionSheetTap">分享给朋友！</button>
+    <button class="flex-sub padding-sm margin-xs radius cu-btn bg-red margin-tb-sm lg" bind:tap="actionSheetTap">向朋友展示新头像！</button>
   </view>
   <view class="flex">
     <navigator target="miniProgram" open-type="exit" class="flex-sub padding-sm margin-xs radius cu-btn line-red text-red margin-tb-sm lg">关闭小程序</navigator>

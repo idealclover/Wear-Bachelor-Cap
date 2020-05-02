@@ -8,7 +8,7 @@ Page({
   data: {
     bgPic: null,
     picChoosed: false,
-    imgList: [1],
+    imgList: [1,2,3,4,5,6,7,8,9],
     currentHatId: 1,
     hatCenterX: 150,
     hatCenterY: 150,
