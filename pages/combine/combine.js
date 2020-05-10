@@ -1,7 +1,12 @@
 // pages/combine/combine.js
+import Poster from "../../libs/wxa-plugin-canvas/poster/poster"
 const app = getApp();
 Page({
-  data: {},
+  data: {
+    posters: [],
+    successNum: 0,
+    posterConfig: {}
+  },
 
   onLoad: function(options) {
     wx.getImageInfo({
@@ -32,15 +37,14 @@ Page({
     pc.translate(hat_center_x, hat_center_y);
     pc.rotate((rotate * Math.PI) / 180);
     pc.drawImage(
-      "../../image/" + currentHatId + ".png",
-      -hat_size / 2,
-      -hat_size / 2,
+      "../../image/" + currentHatId + ".png", -hat_size / 2, -hat_size / 2,
       hat_size,
       hat_size
     );
     pc.draw();
   },
   savePic() {
+    wx.showLoading({ mask: true, title: '生成中' })
     wx.canvasToTempFilePath({
       x: 0,
       y: 0,
@@ -52,11 +56,8 @@ Page({
         wx.saveImageToPhotosAlbum({
           filePath: res.tempFilePath,
           success: res => {
-            wx.navigateTo({
-              url: "../share/share",
-              success: function(res) {},
-              fail: function(res) {},
-              complete: function(res) {}
+            this.onPosterSuccess({
+              detail: 'start'
             });
             // console.log("success:" + res);
           },
@@ -67,13 +68,58 @@ Page({
       }
     });
   },
+  onPosterSuccess(e) {
+    const {
+      detail
+    } = e;
+    const successNum = this.data.successNum;
+    if (detail != 'start') this.data.posters = this.data.posters.concat([{ id: successNum, url: detail }]);
+    if (successNum >= 4) {
+      app.globalData.posters = this.data.posters;
+      wx.hideLoading();
+      wx.navigateTo({
+        url: "../post/post"
+      });
+    } else {
+      this.setData({
+        successNum: successNum + 1,
+        posterConfig: {
+          width: 1240,
+          height: 1754,
+          backgroundColor: "#fff",
+          debug: false,
+          pixelRatio: 1,
+          blocks: [],
+          texts: [],
+          images: [{
+            width: 1240,
+            height: 1754,
+            x: 0,
+            y: 0,
+            borderRadius: 0,
+            url: "/image/posters/" + (successNum + 1) + ".jpg"
+          },
+          {
+            width: 656,
+            height: 656,
+            x: 292,
+            y: 246,
+            url: app.globalData.successPic
+          },
+          ]
+        }
+      }, () => {
+        Poster.create(true);
+      });
+    }
+  },
   /**
    * 用户点击右上角分享
    */
   onShareAppMessage: function() {
-    let successPic = app.globalData.successPic
-      ? app.globalData.successPic
-      : "https://image.idealclover.cn/projects/Wear-Bachelor-Cap/avatar_share.jpg";
+    let successPic = app.globalData.successPic ?
+      app.globalData.successPic :
+      "https://image.idealclover.cn/projects/Wear-Bachelor-Cap/avatar_share.jpg";
     return {
       title: "戴上学士帽，我们毕业啦！！",
       imageUrl: successPic,

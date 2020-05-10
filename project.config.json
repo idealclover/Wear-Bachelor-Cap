@@ -60,6 +60,14 @@
 					"id": -1,
 					"name": "pages/share/share",
 					"pathName": "pages/share/share",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/post/post",
+					"pathName": "pages/post/post",
+					"query": "",
 					"scene": null
 				}
 			]

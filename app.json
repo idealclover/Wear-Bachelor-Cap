@@ -2,7 +2,8 @@
   "pages": [
     "pages/index/index",
     "pages/combine/combine",
-    "pages/share/share"
+    "pages/share/share",
+    "pages/post/post"
   ],
   "window": {
     "backgroundTextStyle": "light",
