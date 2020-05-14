@@ -35,3 +35,5 @@
 ## LICENSE
 
 所有代码根据 [GPL-3.0](./LICENSE) 协议。换句话说，如果您在本项目基础上进行二次开发，需将项目以同样协议进行开源。
+
+设计资源制作特殊感谢：@spencerwooo ovoclover lockoff（排名不分先后）
