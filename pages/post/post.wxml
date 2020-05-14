@@ -8,22 +8,16 @@
     </swiper-item>
   </swiper>
   <view class="flex">
-    <button class="flex-sub padding-sm margin-xs radius cu-btn bg-red margin-tb-sm lg" bind:tap="savePic">收藏我的春夏秋冬</button>
+    <button class="flex-sub padding-sm margin-xs radius cu-btn bg-red margin-tb-sm lg" bind:tap="savePic">收藏属于我的春夏秋冬</button>
   </view>
   <view class="flex">
     <navigator class="flex-sub padding-sm margin-xs radius cu-btn line-red text-red margin-tb-sm lg" bind:tap="notSavePic">不保存海报</navigator>
   </view>
-
-  <!-- <view class="flex">
-    <button class="flex-sub padding-sm margin-xs radius cu-btn line-red text-red margin-tb-sm lg">看段广告支持我</button>
-  </view> -->
 </view>
 <view class="flex footer justify-center align-center">
-  <navigator target="miniProgram" open-type='navigate' app-id='wx2d97a7e54e6094eb' path='pages/index/index'>
+  <navigator target="miniProgram" open-type='navigate' app-id='wx2d97a7e54e6094eb' path='pages/index/index?cid=622'>
     <view class="footer-item text-blue padding-lr-sm">
-      <view class="cuIcon-creative">作者博客
-        <text decode="{{true}}">&emsp;&emsp;</text>
-      </view>
+      <view class="cuIcon-creative">背后的故事</view>
     </view>
   </navigator>
   <view class="footer-item padding-lr-sm"> | </view>
@@ -31,19 +25,6 @@
     <view class="cuIcon-forward">分享给朋友</view>
   </button>
 </view>
-<!--默认action-sheet为隐藏，由button触发-->
-<action-sheet hidden="{{actionSheetHidden}}" bindchange="listenerActionSheet">
-  <action-sheet-item>
-    <button open-type="share">分享给好友</button>
-  </action-sheet-item>
-  <action-sheet-item>
-    <poster id="poster" config="{{posterConfig}}" bind:success="onPosterSuccess" bind:fail="onPosterFail">
-      <button>生成分享海报</button>
-    </poster>
-  </action-sheet-item>
-  <!--自动隐藏action-sheet-->
-  <action-sheet-cancel>取消</action-sheet-cancel>
-</action-sheet>
 
 <view class="flex justify-center align-center">
   <view>
@@ -55,4 +36,7 @@
       idealclover
     </view>
   </navigator>
+</view>
+<view class="flex justify-center align-center padding-tb-xs">
+    谨以此小程序献给我的母校南京大学
 </view>

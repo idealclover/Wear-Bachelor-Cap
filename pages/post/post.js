@@ -6,23 +6,25 @@ Page({
    * 页面的初始数据
    */
   data: {
-    actionSheetHidden: true,
     swiperList: [],
   },
-  actionSheetTap: function() {
-    this.setData({
-      actionSheetHidden: !this.data.actionSheetHidden
-    })
-  },
-  listenerActionSheet: function() {
-    this.setData({
-      actionSheetHidden: !this.data.actionSheetHidden
-    })
-  },
   savePic() {
-    wx.navigateTo({
-      url: "../share/share"
-    });
+    let swiperList = this.data.swiperList;
+    let taskList = [];
+    for (let i = 0; i < swiperList.length; i++) {
+      taskList.push(new Promise((resolve, reject) => {
+        wx.saveImageToPhotosAlbum({
+          filePath: swiperList[i].url,
+          success: resolve(),
+          fail: reject()
+        });
+      }))
+    }
+    Promise.all(taskList).then(res => {
+      wx.navigateTo({
+        url: "../share/share"
+      });
+    })
   },
   notSavePic() {
     wx.navigateTo({
@@ -31,54 +33,11 @@ Page({
   },
   onLoad: function() {
     let successPic = app.globalData.successPic ?
-      app.globalData.successPic :
-    "https://image.idealclover.cn/projects/Wear-Bachelor-Cap/avatar.jpg";
-    // : "https://idealclover.top/icon.jpg";
+      app.globalData.successPic : "https://image.idealclover.cn/projects/Wear-Bachelor-Cap/avatar.jpg";
     console.log(app.globalData.posters);
     this.setData({
       swiperList: app.globalData.posters
     })
-    const posterConfig = {
-      width: 840,
-      height: 1280,
-      backgroundColor: "#fff",
-      debug: false,
-      pixelRatio: 1,
-      blocks: [],
-      texts: [],
-      images: [{
-          width: 840,
-          height: 1280,
-          x: 0,
-          y: 0,
-          borderRadius: 0,
-          url: "https://image.idealclover.cn/projects/Wear-Bachelor-Cap/bg.png"
-        },
-        {
-          width: 670,
-          height: 670,
-          x: 85,
-          y: 211,
-          url: successPic
-        },
-      ]
-    };
-    this.setData({
-      posterConfig: posterConfig
-    });
-  },
-
-  onPosterSuccess(e) {
-    const {
-      detail
-    } = e;
-    wx.previewImage({
-      current: detail,
-      urls: [detail]
-    });
-  },
-  onPosterFail(err) {
-    console.error(err);
   },
 
   /**
@@ -86,8 +45,7 @@ Page({
    */
   onShareAppMessage: function() {
     let successPic = app.globalData.successPic ?
-      app.globalData.successPic :
-      "https://image.idealclover.cn/projects/Wear-Bachelor-Cap/avatar_share.jpg";
+      app.globalData.successPic : "https://image.idealclover.cn/projects/Wear-Bachelor-Cap/avatar_share.jpg";
     return {
       title: "戴上学士帽，我们毕业啦！",
       imageUrl: successPic,

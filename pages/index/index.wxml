@@ -22,17 +22,17 @@
   <button class="flex-sub padding-lr-sm margin-xs radius cu-btn line-red text-red margin-tb-sm lg" bind:tap="chooseImage">选择图片</button>
   <button class="flex-sub padding-lr-sm margin-xs radius cu-btn bg-red margin-tb-sm lg" bind:tap="combinePic" disabled="{{!picChoosed}}">生成头像</button>
 </view>
-<!-- <view class="flex footer justify-center align-center">
-  <navigator target="miniProgram" open-type='navigate' app-id='wx2d97a7e54e6094eb' path='pages/index/index'>
+<view class="flex footer justify-center align-center">
+  <navigator target="miniProgram" open-type='navigate' app-id='wx2d97a7e54e6094eb' path='pages/index/index?cid=622'>
     <view class="footer-item text-blue padding-lr-sm">
-      <view class="cuIcon-creative">作者博客<text decode="{{true}}">&emsp;&emsp;</text></view>
+      <view class="cuIcon-creative">背后的故事</view>
     </view>
   </navigator>
   <view class="footer-item padding-lr-sm"> | </view>
   <button class="cu-btn footer-item text-blue" open-type="share">
       <view class="cuIcon-forward">分享给朋友</view>
   </button>
-</view> -->
+</view>
 <view class="flex justify-center align-center">
   <view>
     Copyright © 2018-2020<text decode="{{true}}">&ensp;</text>
@@ -43,6 +43,6 @@
     </view>
   </navigator>
 </view>
-<view class="flex justify-center align-center">
+<view class="flex justify-center align-center padding-tb-xs">
     谨以此小程序献给我的母校南京大学
 </view>

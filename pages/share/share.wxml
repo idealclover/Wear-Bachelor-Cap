@@ -21,11 +21,9 @@
   </view> -->
 </view>
 <view class="flex footer justify-center align-center">
-  <navigator target="miniProgram" open-type='navigate' app-id='wx2d97a7e54e6094eb' path='pages/index/index'>
-    <view class="footer-item text-blue">
-      <view class="cuIcon-creative">作者博客
-        <text decode="{{true}}">&emsp;&emsp;</text>
-      </view>
+  <navigator target="miniProgram" open-type='navigate' app-id='wx2d97a7e54e6094eb' path='pages/index/index?cid=622'>
+    <view class="footer-item text-blue padding-lr-sm">
+      <view class="cuIcon-creative">背后的故事</view>
     </view>
   </navigator>
   <view class="footer-item"> | </view>
