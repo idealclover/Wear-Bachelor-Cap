@@ -72,10 +72,12 @@ Page({
     const {
       detail
     } = e;
+    console.log(detail)
     const successNum = this.data.successNum;
     if (detail != 'start') this.data.posters = this.data.posters.concat([{ id: successNum, url: detail }]);
     if (successNum >= 4) {
       app.globalData.posters = this.data.posters;
+      console.log(app.globalData.posters);
       wx.hideLoading();
       wx.navigateTo({
         url: "../post/post"

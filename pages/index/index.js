@@ -47,40 +47,18 @@ Page({
       });
     }
   },
-  bindGetUserInfo: function(e) {
-    console.log(e.detail.userInfo)
-    if (e.detail.userInfo){
-      //用户按了允许授权按钮
-      app.globalData.userInfo = e.detail.userInfo;
-      this.setData({
-        userInfo: e.detail.userInfo,
-        bgPic: e.detail.userInfo.avatarUrl
-      });
-      this.assignPicChoosed();
-    } else {
-      //用户按了拒绝按钮
-    }
-  },
   getAvatar() {
-    if (app.globalData.userInfo) {
-      this.setData({
-        bgPic: app.globalData.userInfo.avatarUrl.replace(/132/g, '0')
-      });
-      this.assignPicChoosed();
-    } else {
-      // console.log(res.userInfo.avatarUrl);
-      // 在没有 open-type=getUserInfo 版本的兼容处理
-      wx.getUserInfo({
-        success: res => {
-          app.globalData.userInfo = res.userInfo;
-          this.setData({
-            userInfo: res.userInfo,
-            bgPic: res.userInfo.avatarUrl.replace(/132/g, '0')
-          });
-          this.assignPicChoosed();
-        }
-      });
-    }
+    wx.getUserProfile({
+      desc: '用于获取当前用户头像', // 声明获取用户个人信息后的用途，后续会展示在弹窗中，请谨慎填写
+      success: (res) => {
+        app.globalData.userInfo = res.userInfo;
+        this.setData({
+          userInfo: res.userInfo,
+          bgPic: res.userInfo.avatarUrl.replace(/132/g, '0')
+        });
+        this.assignPicChoosed();
+      }
+    })
   },
   chooseImage(from) {
     wx.chooseImage({

@@ -315,25 +315,30 @@ const helper = {
      */
     _downImage(imageUrl) {
         return new Promise((resolve, reject) => {
-            if (/^http/.test(imageUrl) && !new RegExp(wx.env.USER_DATA_PATH).test(imageUrl)) {
-                wx.downloadFile({
-                    url: this._mapHttpToHttps(imageUrl),
-                    success: (res) => {
-                        if (res.statusCode === 200) {
-                            resolve(res.tempFilePath);
-                        } else {
-                            reject(res.errMsg);
-                        }
-                    },
-                    fail(err) {
-                        reject(err);
-                    },
-                });
+            if (/^http:\/\/tmp\//.test(imageUrl)) {
+              resolve(imageUrl);
+            } else if (
+              /^http/.test(imageUrl) &&
+              !new RegExp(wx.env.USER_DATA_PATH).test(imageUrl)
+            ) {
+              wx.downloadFile({
+                url: this._mapHttpToHttps(imageUrl),
+                success: res => {
+                  if (res.statusCode === 200) {
+                    resolve(res.tempFilePath);
+                  } else {
+                    reject(res.errMsg);
+                  }
+                },
+                fail(err) {
+                  reject(err);
+                }
+              });
             } else {
-                // 支持本地地址
-                resolve(imageUrl);
+              // 支持本地地址
+              resolve(imageUrl);
             }
-        });
+          });
     },
     /**
      * 获取图片信息

@@ -2,6 +2,7 @@
   "pages": [
     "pages/index/index",
     "pages/combine/combine",
+    "pages/upload/upload",
     "pages/share/share",
     "pages/post/post"
   ],
@@ -11,8 +12,5 @@
     "navigationBarTitleText": "毕业帽头像",
     "navigationBarTextStyle": "white"
   },
-  "sitemapLocation": "sitemap.json",
-  "navigateToMiniProgramAppIdList": [
-    "wx2d97a7e54e6094eb"
-  ]
+  "sitemapLocation": "sitemap.json"
 }
