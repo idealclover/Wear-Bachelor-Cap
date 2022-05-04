@@ -1,7 +1,7 @@
 <view>
   <view class="flex padding justify-center">
     <canvas class="myCanvas" canvas-id="myCanvas" style="height:300px;width:300;" />
-  </view>
+  </view>z
   <!-- <radio-group class="block">
     <view class="cu-form-group margin-top">
       <view class="title">不添加头像框</view>

@@ -24,7 +24,7 @@ Page({
         height: 300
       },
       boundStyle: {
-        color: '#E54D42',
+        color: '#8799A3',
         mask: 'rgba(0,0,0,0.8)',
         lineWidth: 1
       }
@@ -40,28 +40,76 @@ Page({
     this.cropper.touchEnd(e)
   },
   getCropperImage() {
-    this.cropper.getCropperImage(function(path, err) {
+    this.cropper.getCropperImage(function (path, err) {
+      wx.showLoading({
+        title: '图片处理中',
+      })
       if (err) {
         wx.showModal({
           title: '错误提示',
           content: err.message
         })
       } else {
-        let pages = getCurrentPages();
-        let prevPage = pages[pages.length - 2];
-        prevPage.setData({
-          bgPic: path,
-          picChoosed: true
-        })
-        wx.navigateBack({
-          delta: 1
-        })
+        wx.cloud.init()
+        wx.compressImage({
+          src: path,
+          quality: 50,
+          fail: function () {
+            wx.showToast({
+              title: '文件识别失败',
+              icon: 'none',
+              duration: 2000
+            })
+          },
+          success: res => {
+            wx.cloud.callFunction({
+              name: 'imgSecCheckV2',
+              data: {
+                file: wx.cloud.CDN({
+                  type: 'filePath',
+                  filePath: res.tempFilePath,
+                })
+              }
+            }).then(result => {
+              let {
+                errCode
+              } = result.result.data;
+              switch (errCode) {
+                case 87014:
+                  wx.showToast({
+                    title: '违法违规内容',
+                    icon: 'none',
+                    duration: 2000
+                  })
+                  break;
+                case 0:
+                  // 获取裁剪图片资源后，给data添加src属性及其值
+                  let pages = getCurrentPages();
+                  let prevPage = pages[pages.length - 2];
+                  prevPage.setData({
+                    bgPic: path,
+                    picChoosed: true
+                  })
+                  wx.navigateBack({
+                    delta: 1
+                  })
+                  break;
+                default:
+                  wx.showToast({
+                    title: '内部服务错误',
+                    icon: 'none',
+                    duration: 2000
+                  })
+                  break;
+              }
+            })
+          }
+        });
       }
     })
   },
   uploadTap() {
     const self = this
-
     wx.chooseImage({
       count: 1, // 默认9
       sizeType: ['original', 'compressed'], // 可以指定是原图还是压缩图，默认二者都有
@@ -78,7 +126,7 @@ Page({
       cropperOpt
     } = this.data
 
-    cropperOpt.boundStyle.color = '#E54D42'
+    cropperOpt.boundStyle.color = '#8799A3'
 
     this.setData({
       cropperOpt

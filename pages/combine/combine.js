@@ -8,11 +8,12 @@ Page({
     posterConfig: {}
   },
 
-  onLoad: function(options) {
+  onLoad: function (options) {
     wx.getImageInfo({
       src: app.globalData.bgPic,
       success: res => {
         this.bgPic = res.path;
+        console.log(this.bgPic)
         this.draw();
       }
     });
@@ -21,7 +22,7 @@ Page({
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady: function() {},
+  onReady: function () {},
 
   draw() {
     let scale = app.globalData.scale;
@@ -44,7 +45,10 @@ Page({
     pc.draw();
   },
   savePic() {
-    wx.showLoading({ mask: true, title: '生成中' })
+    wx.showLoading({
+      mask: true,
+      title: '生成中'
+    })
     wx.canvasToTempFilePath({
       x: 0,
       y: 0,
@@ -74,7 +78,10 @@ Page({
     } = e;
     console.log(detail)
     const successNum = this.data.successNum;
-    if (detail != 'start') this.data.posters = this.data.posters.concat([{ id: successNum, url: detail }]);
+    if (detail != 'start') this.data.posters = this.data.posters.concat([{
+      id: successNum,
+      url: detail
+    }]);
     if (successNum >= 4) {
       app.globalData.posters = this.data.posters;
       console.log(app.globalData.posters);
@@ -94,31 +101,33 @@ Page({
           blocks: [],
           texts: [],
           images: [{
-            width: 1240,
-            height: 1754,
-            x: 0,
-            y: 0,
-            borderRadius: 0,
-            url: "/image/posters/" + (successNum + 1) + ".jpg"
-          },
-          {
-            width: 656,
-            height: 656,
-            x: 292,
-            y: 246,
-            url: app.globalData.successPic
-          },
+              width: 1240,
+              height: 1754,
+              x: 0,
+              y: 0,
+              borderRadius: 0,
+              url: "/image/posters/" + (successNum + 1) + ".jpg"
+            },
+            {
+              width: 656,
+              height: 656,
+              x: 292,
+              y: 246,
+              url: app.globalData.successPic
+            },
           ]
         }
       }, () => {
-        Poster.create(true);
+        setTimeout(function () {
+          Poster.create(true);
+        }, 50)
       });
     }
   },
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function() {
+  onShareAppMessage: function () {
     let successPic = app.globalData.successPic ?
       app.globalData.successPic :
       "https://image.idealclover.cn/projects/Wear-Bachelor-Cap/avatar_share.jpg";
@@ -126,7 +135,7 @@ Page({
       title: "戴上学士帽，我们毕业啦！！",
       imageUrl: successPic,
       path: "/pages/index/index",
-      success: function(res) {}
+      success: function (res) {}
     };
   }
 });
