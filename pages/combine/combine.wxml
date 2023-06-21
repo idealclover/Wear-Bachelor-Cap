@@ -38,8 +38,9 @@
     </view>
   </navigator>
 </view>
-<view class="flex justify-center align-center padding-tb-xs">
+<view class="flex justify-center align-center padding-top-xs padding-bottom">
     谨以此小程序献给我的母校南京大学
 </view>
+<ad unit-id="adunit-e6666c4c6ced8717"></ad>
 <poster id="poster" config="{{posterConfig}}" hideLoading="true" bind:success="onPosterSuccess" bind:fail="onPosterFail">
 </poster>
