@@ -8,19 +8,19 @@
 
 ## 扫码预览
 
-![](https://image.idealclover.cn/projects/Wear-Bachelor-Cap/qrcode.jpg)
+![](https://cdn.jsdelivr.net/gh/idealclover/Wear-Bachelor-Cap@master/assets/qrcode.jpg)
 
 ## 小程序截图
 
-![](https://image.idealclover.cn/projects/Wear-Bachelor-Cap/demo.jpg)
+![](https://cdn.jsdelivr.net/gh/idealclover/Wear-Bachelor-Cap@master/assets/demo.jpg)
 
 ## 生成头像示例
 
-![](https://image.idealclover.cn/projects/Wear-Bachelor-Cap/demo_icons.jpg)
+![](https://cdn.jsdelivr.net/gh/idealclover/Wear-Bachelor-Cap@master/assets/demo-icons.jpg)
 
 ## 海报示例
 
-![](https://image.idealclover.cn/projects/Wear-Bachelor-Cap/demo_posters.jpg)
+![](https://cdn.jsdelivr.net/gh/idealclover/Wear-Bachelor-Cap@master/assets/demo-posters.jpg)
 
 ## 项目依赖
 

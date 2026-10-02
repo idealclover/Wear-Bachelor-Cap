@@ -33,7 +33,7 @@ Page({
   },
   onLoad: function() {
     let successPic = app.globalData.successPic ?
-      app.globalData.successPic : "https://image.idealclover.cn/projects/Wear-Bachelor-Cap/avatar.jpg";
+      app.globalData.successPic : "https://cdn.jsdelivr.net/gh/idealclover/Wear-Bachelor-Cap@master/assets/avatar.jpg";
     console.log(app.globalData.posters);
     this.setData({
       swiperList: app.globalData.posters
@@ -45,7 +45,7 @@ Page({
    */
   onShareAppMessage: function() {
     let successPic = app.globalData.successPic ?
-      app.globalData.successPic : "https://image.idealclover.cn/projects/Wear-Bachelor-Cap/avatar_share.jpg";
+      app.globalData.successPic : "https://cdn.jsdelivr.net/gh/idealclover/Wear-Bachelor-Cap@master/assets/avatar-share.jpg";
     return {
       title: "戴上学士帽，我们毕业啦！",
       imageUrl: successPic,
